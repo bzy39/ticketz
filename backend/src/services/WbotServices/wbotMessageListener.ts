@@ -298,7 +298,7 @@ const downloadMedia = async (msg: proto.IWebMessageInfo, wbot: Session, ticket: 
   const fileLimit = parseInt(await CheckSettings("downloadLimit", "15"), 10);
   if (wbot && message?.fileLength && +message.fileLength > fileLimit*1024*1024) {
     const fileLimitMessage = {
-      text: `\u200e*Mensagem Automática*:\nNosso sistema aceita apenas arquivos com no máximo ${fileLimit} MiB`
+      text: `\u200e*Pesan Otomatis*:\nSistem kami hanya menerima file dengan ukuran maksimum ${fileLimit} MiB`
     };
     
     const sendMsg = await wbot.sendMessage(
@@ -306,7 +306,7 @@ const downloadMedia = async (msg: proto.IWebMessageInfo, wbot: Session, ticket: 
       fileLimitMessage
     );
 
-    sendMsg.message.extendedTextMessage.text = "\u200e*Mensagem do sistema*:\nArquivo recebido além do limite de tamanho do sistema, se for necessário ele pode ser obtido no aplicativo do whatsapp.";
+    sendMsg.message.extendedTextMessage.text = "\u200e*Informasi*:\nUkuran file melebihi batas.";
 
     // eslint-disable-next-line no-use-before-define
     await verifyMessage(sendMsg, ticket, ticket.contact);
